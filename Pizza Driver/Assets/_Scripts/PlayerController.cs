@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     float isMoving;
     bool hasBluePizza;
     bool hasRedPizza;
-    
+
     public SpriteRenderer playerSprite;
     public Color32 hasBluePizzaColour;
     public Color32 hasRedPizzaColour;
@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey("down"))
         {
             isMoving = 1;
-            transform.Translate(0, -currSpeed , 0);
+            transform.Translate(0, -currSpeed, 0);
         }
 
 
@@ -63,14 +63,14 @@ public class PlayerController : MonoBehaviour
         {
             transform.Rotate(0, 0, currSpeed * rotateMulti * isMoving);
         }
-        
+
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
         currSpeed = damagedSpeed;
         hitSomething.Play();
- 
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -103,4 +103,3 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
-

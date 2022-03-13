@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - BlueZone
+  - RedZone
+  - RedPizza
+  - BluePizza
   layers:
   - Default
   - TransparentFX
@@ -40,4 +44,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 4255461367
+    locked: 0
+  - name: Menus
+    uniqueID: 3892659365
     locked: 0
