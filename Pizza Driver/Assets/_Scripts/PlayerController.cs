@@ -8,9 +8,9 @@ public class PlayerController : MonoBehaviour
     public float boostSpeed;
     public float damagedSpeed;
     public float rotateMulti;
-
     float currSpeed;
     float isMoving;
+    
     bool hasBluePizza;
     bool hasRedPizza;
 
@@ -28,7 +28,9 @@ public class PlayerController : MonoBehaviour
         currSpeed = baseSpeed;
         hasBluePizza = false;
         hasRedPizza = false;
+        
         playerSprite.color = defaultColour;
+
     }
 
     // Update is called once per frame
@@ -66,11 +68,19 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public IEnumerator Boost()
+    {
+        
+        yield return new WaitForSeconds(0.18f);
+        currSpeed = boostSpeed;
+        yield return new WaitForSeconds(2f);
+        currSpeed = baseSpeed;
+    }
+
     void OnCollisionEnter2D(Collision2D other)
     {
-        currSpeed = damagedSpeed;
-        hitSomething.Play();
-
+            currSpeed = damagedSpeed;
+            hitSomething.Play();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -79,14 +89,14 @@ public class PlayerController : MonoBehaviour
         {
             playerSprite.color = hasBluePizzaColour;
             hasBluePizza = true;
-            Destroy(other.gameObject, 0.1f);
+            Destroy(other.gameObject);
         }
 
         if (other.tag == "RedPizza" && hasRedPizza == false && hasBluePizza == false)
         {
             playerSprite.color = hasRedPizzaColour;
             hasRedPizza = true;
-            Destroy(other.gameObject, 0.1f);
+            Destroy(other.gameObject);
         }
 
         if (other.tag == "BlueZone" && hasBluePizza == true)
@@ -99,7 +109,12 @@ public class PlayerController : MonoBehaviour
         {
             playerSprite.color = defaultColour;
             hasRedPizza = false;
+        }
 
+        if (other.tag == "Boost")
+        {
+            Destroy(other.gameObject);
+            StartCoroutine(Boost());
         }
     }
 }

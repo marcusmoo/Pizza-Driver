@@ -8,6 +8,7 @@ TagManager:
   - RedZone
   - RedPizza
   - BluePizza
+  - Boost
   layers:
   - Default
   - TransparentFX
