@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 770763287135481127}
   - component: {fileID: 770763287135481129}
   - component: {fileID: 770763287135481126}
+  - component: {fileID: 1267341824}
   m_Layer: 0
   m_Name: RedZone
   m_TagString: RedZone
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770763287135481124}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.62, y: -0.02, z: 0}
+  m_LocalPosition: {x: -2.9, y: -0.03, z: 0}
   m_LocalScale: {x: 1.3541927, y: 1.2526089, z: 0.82685626}
   m_Children: []
   m_Father: {fileID: 770763287146545677}
@@ -108,6 +109,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.7583425, y: 1.8198423}
   m_EdgeRadius: 0
+--- !u!114 &1267341824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770763287135481124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09f2f9a0f031ca479955bd639522853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoneSprite: {fileID: 770763287135481129}
+  deliveredColour:
+    serializedVersion: 2
+    rgba: 4289572269
+  Player: {fileID: 0}
 --- !u!1 &770763287146545675
 GameObject:
   m_ObjectHideFlags: 0

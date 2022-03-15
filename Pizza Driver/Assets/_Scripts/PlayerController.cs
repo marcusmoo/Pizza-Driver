@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour
     float currSpeed;
     float isMoving;
     
-    bool hasBluePizza;
-    bool hasRedPizza;
+    public bool hasBluePizza;
+    public bool hasRedPizza;
 
     public SpriteRenderer playerSprite;
     public Color32 hasBluePizzaColour;
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         
         yield return new WaitForSeconds(0.18f);
         currSpeed = boostSpeed;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         currSpeed = baseSpeed;
     }
 
@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "BlueZone" && hasBluePizza == true)
         {
             playerSprite.color = defaultColour;
-            hasBluePizza = false;
+            hasBluePizza = false;    
         }
 
         if (other.tag == "RedZone" && hasRedPizza == true)
