@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameController gameController;
+    
     public float baseSpeed;
     public float boostSpeed;
     public float damagedSpeed;
@@ -13,13 +15,15 @@ public class PlayerController : MonoBehaviour
     
     public bool hasBluePizza;
     public bool hasRedPizza;
-
     public SpriteRenderer playerSprite;
     public Color32 hasBluePizzaColour;
     public Color32 hasRedPizzaColour;
     public Color32 defaultColour;
 
     public AudioSource hitSomething;
+    public AudioSource rev;
+
+    
 
     // Start is called before the first frame update
 
@@ -73,7 +77,7 @@ public class PlayerController : MonoBehaviour
         
         yield return new WaitForSeconds(0.18f);
         currSpeed = boostSpeed;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
         currSpeed = baseSpeed;
     }
 
@@ -90,6 +94,7 @@ public class PlayerController : MonoBehaviour
             playerSprite.color = hasBluePizzaColour;
             hasBluePizza = true;
             Destroy(other.gameObject);
+            
         }
 
         if (other.tag == "RedPizza" && hasRedPizza == false && hasBluePizza == false)
@@ -102,19 +107,22 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "BlueZone" && hasBluePizza == true)
         {
             playerSprite.color = defaultColour;
-            hasBluePizza = false;    
+            hasBluePizza = false;
+            gameController.UpdateDeliveries();
         }
 
         if (other.tag == "RedZone" && hasRedPizza == true)
         {
             playerSprite.color = defaultColour;
             hasRedPizza = false;
+            gameController.UpdateDeliveries();
         }
 
         if (other.tag == "Boost")
         {
             Destroy(other.gameObject);
             StartCoroutine(Boost());
+            rev.Play();
         }
     }
 }
